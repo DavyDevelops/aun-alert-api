@@ -7,7 +7,7 @@ import { Router } from './routes/routes.js'
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: ["https://aun-alert-system-server.vercel.app"],
+    origin: ["https://aun-alert-api.vercel.app/aunalertsystem/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }))
