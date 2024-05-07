@@ -6,11 +6,12 @@ import { Router } from './routes/routes.js'
 
 const app = express()
 app.use(express.json())
-app.use(cors({
-    origin: ["https://aun-alert-client.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}))
+app.use(cors())
+// app.use(cors({
+//     origin: ["https://aun-alert-client.vercel.app"],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true
+// }))
 dotenv.config({path: "./config/.env"})
 
 app.use('/aunalertsystem', Router) 
