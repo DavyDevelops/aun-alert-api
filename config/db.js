@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
-dotenv.config({path: './config/.env'})
+dotenv.config({path: "./config/.env"})
 
-const Connection = async () => { 
+const Connection = async () => {
     try {
         await mongoose.connect(process.env.URI)
-        console.log("Connected")
+        console.log("Database Connected Successfully")
     } catch(err) {
         console.log("Error: " + err.message)
     }
 }
- 
+
 Connection()

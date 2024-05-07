@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const ContactSchema = new mongoose.Schema({
     name: {
@@ -22,7 +22,12 @@ const ContactSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     }
-})
+});
 
-const ContactModel = mongoose.model("contact", ContactSchema)
-export {ContactModel}
+// Compound index to ensure email and phone are unique per user
+ContactSchema.index({ postedBy: 1, email: 1 }, { unique: true });
+ContactSchema.index({ postedBy: 1, phone: 1 }, { unique: true });
+
+const ContactModel = mongoose.model('contact', ContactSchema);
+
+export { ContactModel };
