@@ -1,6 +1,6 @@
 {
-  "name": "server",
-  "version": "1.0.0",
+  "name": "aun-alert-server",
+  "version": "1.3.2",
   "description": "",
   "main": "index.js",
   "type": "module",

@@ -4,8 +4,15 @@ import { validationResult } from 'express-validator'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser'
 
 dotenv.config({path: "../config/.env"})
+
+const app = express()
+app.use(cookieParser())
+
+
+
 
 
 const Register = async (req, res) => {
@@ -54,7 +61,9 @@ const Login = async (req, res) => {
              });
         }
         const token = jwt.sign({_id: userExist}, process.env.JWT_SECRET_KEY, {expiresIn: "3d"})
-        //todo store token in refresh token or cookies
+        
+        // Store token in a cookie
+        res.cookie('token', token, { httpOnly: true });
 
        const user ={...userExist._doc, passwword: undefined};
         return res.status(201).json({success: true, user, token})
